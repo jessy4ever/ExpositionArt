@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<exposition nom="Lumières et Couleurs" lieu="Musée de Sfax" date="2025-03-15"> 
+    
+    <oeuvre id="O1"> <titre>Reflets de la Méditerranée</titre> 
+        <artiste>Yasmine Abbes</artiste> 
+        <technique>Aquarelle</technique> 
+        <style>Impressionnisme</style> 
+        <anneeCreation>2024</anneeCreation>
+    </oeuvre> 
+    
+    <oeuvre id="O2"> 
+        <titre>Silence d’or</titre> 
+        <artiste>Amira Ben Salah</artiste>
+        <technique>Huile sur toile</technique>
+        <style>Réalisme</style> 
+        <anneeCreation>2023</anneeCreation> 
+    </oeuvre> 
+    
+    <oeuvre id="O3">
+        <titre>Danse des ombres</titre>
+        <artiste>Talel K.</artiste> 
+        <technique>Acrylique</technique>
+        <style>Abstrait</style> 
+        <anneeCreation>2025</anneeCreation>
+    </oeuvre> 
+
+</exposition>
