@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<definitions xmlns="http://schemas.xmlsoap.org/wsdl/"
+             xmlns:tns="http://TP2.exposition.com/"
+             xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/"
+             xmlns:xsd="http://www.w3.org/2001/XMLSchema"
+             targetNamespace="http://TP2.exposition.com/"
+             name="ExpositionWSService">
+
+    <!-- Messages -->
+    <message name="getNomExpositionRequest"/>
+    <message name="getNomExpositionResponse">
+        <part name="return" type="xsd:string"/>
+    </message>
+
+    <message name="getListeOeuvresRequest"/>
+    <message name="getListeOeuvresResponse">
+        <part name="return" type="xsd:string"/>
+    </message>
+
+    <!-- PortType -->
+    <portType name="ExpositionWSPortType">
+        <operation name="getNomExposition">
+            <input message="tns:getNomExpositionRequest"/>
+            <output message="tns:getNomExpositionResponse"/>
+        </operation>
+        <operation name="getListeOeuvres">
+            <input message="tns:getListeOeuvresRequest"/>
+            <output message="tns:getListeOeuvresResponse"/>
+        </operation>
+    </portType>
+
+    <!-- Binding -->
+    <binding name="ExpositionWSBinding" type="tns:ExpositionWSPortType">
+        <soap:binding style="rpc" transport="http://schemas.xmlsoap.org/soap/http"/>
+        <operation name="getNomExposition">
+            <soap:operation soapAction="getNomExposition"/>
+            <output><soap:body use="literal"/></output>
+        </operation>
+        <operation name="getListeOeuvres">
+            <soap:operation soapAction="getListeOeuvres"/>
+            <output><soap:body use="literal"/></output>
+        </operation>
+    </binding>
+
+    <!-- Service -->
+    <service name="ExpositionWSService">
+        <port name="ExpositionWSPort" binding="tns:ExpositionWSBinding">
+            <soap:address location="http://localhost:8080/expo"/>
+        </port>
+    </service>
+
+</definitions>

@@ -1,4 +1,4 @@
-package com.exposition;
+package com.exposition.TP1;
 
 import javax.xml.XMLConstants;
 import javax.xml.parsers.DocumentBuilder;

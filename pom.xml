@@ -2,21 +2,24 @@
 <project xmlns="http://maven.apache.org/POM/4.0.0"
          xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
          xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 
-         https://maven.apache.org/xsd/maven-4.0.0.xsd">
-    
+                             https://maven.apache.org/xsd/maven-4.0.0.xsd">
+
     <modelVersion>4.0.0</modelVersion>
+
     <groupId>com.exposition</groupId>
-    <artifactId>ExpositionArt</artifactId>
+    <artifactId>AmeliorationTP1</artifactId>
     <version>1.0-SNAPSHOT</version>
-    <name>ExpositionArt</name>
+    <name>AmeliorationTP1</name>
 
     <properties>
+        <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
         <maven.compiler.source>17</maven.compiler.source>
         <maven.compiler.target>17</maven.compiler.target>
+        <jakarta.version>3.0.2</jakarta.version>
     </properties>
 
     <dependencies>
-        <!-- Dépendance pour la validation XML et XPath -->
+        <!-- TP1: Validation XML/XSD et XPath -->
         <dependency>
             <groupId>xerces</groupId>
             <artifactId>xercesImpl</artifactId>
@@ -27,20 +30,6 @@
             <groupId>xml-apis</groupId>
             <artifactId>xml-apis</artifactId>
             <version>1.4.01</version>
-        </dependency>
-
-        <dependency>
-            <groupId>org.junit.jupiter</groupId>
-            <artifactId>junit-jupiter-api</artifactId>
-            <version>5.10.0</version>
-            <scope>test</scope>
-        </dependency>
-
-        <dependency>
-            <groupId>org.junit.jupiter</groupId>
-            <artifactId>junit-jupiter-engine</artifactId>
-            <version>5.10.0</version>
-            <scope>test</scope>
         </dependency>
 
         <dependency>
@@ -55,36 +44,81 @@
             <version>5.1.1</version>
         </dependency>
 
+        <!-- TP2: Jakarta WS (SOAP) -->
         <dependency>
-            <groupId>xalan</groupId>
-            <artifactId>xalan</artifactId>
-            <version>2.7.3</version>
+            <groupId>jakarta.xml.ws</groupId>
+            <artifactId>jakarta.xml.ws-api</artifactId>
+            <version>3.0.1</version>
         </dependency>
 
+        <dependency>
+            <groupId>com.sun.xml.ws</groupId>
+            <artifactId>rt</artifactId>
+            <version>3.0.2</version>
+        </dependency>
+
+        <dependency>
+            <groupId>jakarta.jws</groupId>
+            <artifactId>jakarta.jws-api</artifactId>
+            <version>3.0.0</version>
+        </dependency>
+
+        <!-- Tests JUnit -->
+        <dependency>
+            <groupId>org.junit.jupiter</groupId>
+            <artifactId>junit-jupiter-api</artifactId>
+            <version>5.10.0</version>
+            <scope>test</scope>
+        </dependency>
+
+        <dependency>
+            <groupId>org.junit.jupiter</groupId>
+            <artifactId>junit-jupiter-engine</artifactId>
+            <version>5.10.0</version>
+            <scope>test</scope>
+        </dependency>
 
     </dependencies>
 
-<build>
-    <plugins>
-        <plugin>
-            <groupId>org.codehaus.mojo</groupId>
-            <artifactId>exec-maven-plugin</artifactId>
-            <version>3.1.0</version>
-            <configuration>
-                <mainClass>com.exposition.ValidationXPath</mainClass>
-                <commandlineArgs></commandlineArgs>
-                <arguments>
-                    <argument>--add-modules=java.xml</argument>
-                </arguments>
-                <systemProperties>
-                    <systemProperty>
-                        <key>java.xml.module</key>
-                        <value>java.xml</value>
-                    </systemProperty>
-                </systemProperties>
-            </configuration>
-        </plugin>
-    </plugins>
-</build>
+    <build>
+        <plugins>
+            <!-- Compiler -->
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-compiler-plugin</artifactId>
+                <version>3.13.0</version>
+            </plugin>
+
+            <!-- Exécution TP1 et TP2 -->
+            <plugin>
+                <groupId>org.codehaus.mojo</groupId>
+                <artifactId>exec-maven-plugin</artifactId>
+                <version>3.1.0</version>
+                <executions>
+                    <!-- TP1 Validation XPath -->
+                    <execution>
+                        <id>run-tp1</id>
+                        <goals>
+                            <goal>java</goal>
+                        </goals>
+                        <configuration>
+                            <mainClass>com.exposition.TP1.ValidationXPath</mainClass>
+                        </configuration>
+                    </execution>
+                    <!-- TP2 Serveur SOAP -->
+                    <execution>
+                        <id>run-tp2-server</id>
+                        <goals>
+                            <goal>java</goal>
+                        </goals>
+                        <configuration>
+                            <mainClass>com.exposition.TP2.ServeurExposition</mainClass>
+                        </configuration>
+                    </execution>
+                </executions>
+            </plugin>
+
+        </plugins>
+    </build>
 
 </project>
