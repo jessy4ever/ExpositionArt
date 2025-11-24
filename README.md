@@ -114,9 +114,8 @@ Le projet contient :
 
 ### 5. Scripts de test JUnit
 
-Deux tests existent :
+J'ai fait :
 
-* **Test serveur SOAP**
 * **Test client SOAP**
 
 ---
@@ -161,7 +160,7 @@ Exemples avec SoapUI / Postman SOAP :
 
 ---
 
-## 🏛️ Architecture générale
+## Architecture générale
 
 ```
    XML/XSD ----> Validation ----+
